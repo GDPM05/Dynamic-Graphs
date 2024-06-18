@@ -1,0 +1,20 @@
+{
+  "name": "dynamic-graphs",
+  "version": "1.0.0",
+  "description": "Dynamic graphs to help with deep learning models development",
+  "main": "main-server.js",
+  "scripts": {
+    "test": "test -s",
+    "run": "nodemon main-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDPM05/Dynamic-Graphs.git"
+  },
+  "author": "GDPM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GDPM05/Dynamic-Graphs/issues"
+  },
+  "homepage": "https://github.com/GDPM05/Dynamic-Graphs#readme"
+}
