@@ -19,26 +19,29 @@ app.listen(port, ()=>{
 io.on('connection', (socket) => {
     console.log('Connected to socket.');
     
-    socket.on('first_cord', (data) => {
-        console.log(data);
-        var i = 0;
-        setInterval(()=>{
-            socket.emit("first_cord", {y: Math.floor(Math.random()*50)});
-            i += 1;
-            if(i == 100){
-                clearInterval(this);
-            }
-        }, 500)
-        for(var i = 0; i < 100; i++){
-            
-        }        
-    })
-
-    app.get('/first_cord', (req, res) => {
-        for(var i = 0; i < 100; i + 10){
-            socket.emit("y", {y: i});
-        }
+    socket.emit('config', {
+      'window': {
+        'x_min': -1,
+        'x_max': 1,
+        'y_min': -1,
+        'y_max': 1,
+      },
+      'unit': 'time (seconds)',
+      'step': 0.1,
     });
+
+    socket.on('test', (data)=>{
+      var i = 0;
+      const e = 2.7182818284590452353602874713526624977572;
+      const inte = setInterval(()=>{
+
+        socket.emit('point', {y: (1 / (1 + Math.E**i))});
+        i += 0.1;
+
+        if(i >= 1)
+          clearInterval(inte);
+      }, 500);
+    })
 })
 
 app.get('/', (req, res) => {
